@@ -15,25 +15,42 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="20dp">
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="16dp">
 
-            <TextView
-                android:id="@+id/txtFinanceTitle"
+            <ImageButton
+                android:id="@+id/btnBackFinance"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_launcher_foreground"
+                app:tint="#1E3A8A"
+                android:contentDescription="Back" />
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Financials"
-                android:textColor="#1E3A8A"
-                android:textSize="32sp"
-                android:textStyle="bold" />
+                android:orientation="vertical"
+                android:layout_marginStart="8dp">
 
-            <TextView
-                android:id="@+id/txtFinanceSub"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Overview of church funds and expenses"
-                android:textColor="#64748B"
-                android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/txtFinanceTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Financials"
+                    android:textColor="#1E3A8A"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtFinanceSub"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Church funds overview"
+                    android:textColor="#64748B"
+                    android:textSize="12sp" />
+            </LinearLayout>
         </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -155,6 +172,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:nestedScrollingEnabled="false" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnReturnFinance"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text="Return to Dashboard"
+                android:textColor="#1E3A8A"
+                app:cornerRadius="12dp"
+                app:strokeColor="#1E3A8A" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

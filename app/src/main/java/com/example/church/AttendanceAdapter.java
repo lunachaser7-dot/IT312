@@ -30,6 +30,10 @@ public class AttendanceAdapter extends RecyclerView.Adapter<AttendanceAdapter.Vi
         holder.txtName.setText(attendance.getFullname());
         holder.txtDate.setText(attendance.getAttendance_date());
         holder.txtStatus.setText(attendance.getStatus());
+        
+        // Show notes if your layout has a place for it, or just keep as is
+        // If you had a txtNotes in item_attendance.xml, you'd use:
+        // holder.txtNotes.setText(attendance.getCleanNotes());
 
         // Set Initial
         if (attendance.getFullname() != null && !attendance.getFullname().isEmpty()) {

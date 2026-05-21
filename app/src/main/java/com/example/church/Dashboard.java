@@ -11,6 +11,7 @@ public class Dashboard extends AppCompatActivity {
 
     private CardView cardAttendance, cardFinance, cardSummary;
     private TextView txtTitle, txtSub;
+    private android.widget.ImageButton btnLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,11 +24,23 @@ public class Dashboard extends AppCompatActivity {
         cardSummary = findViewById(R.id.card_summary);
         txtTitle = findViewById(R.id.txtDashTitle);
         txtSub = findViewById(R.id.txtDashSub);
+        btnLogout = findViewById(R.id.btnLogout);
 
         // Apply Animations
         applyDashboardAnimations();
 
         // Click Listeners
+        if (btnLogout != null) {
+            btnLogout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(Dashboard.this, Login.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+        }
         if (cardAttendance != null) {
             cardAttendance.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -32,7 +32,8 @@ public class AttendanceActivity extends AppCompatActivity {
     private EditText etEventId;
     private EditText etNotes;
     private Spinner spinnerStatus;
-    private Button btnAddAttendance;
+    private Button btnAddAttendance, btnReturn;
+    private android.widget.ImageButton btnBack;
     private View appBar;
     private CardView inputCard;
     private TextView txtLogs;
@@ -49,6 +50,8 @@ public class AttendanceActivity extends AppCompatActivity {
         etNotes = findViewById(R.id.etNotes);
         spinnerStatus = findViewById(R.id.spinnerStatus);
         btnAddAttendance = findViewById(R.id.btnAddAttendance);
+        btnReturn = findViewById(R.id.btnReturnDashboard);
+        btnBack = findViewById(R.id.btnBack);
         recyclerView = findViewById(R.id.recyclerView);
         appBar = findViewById(R.id.appBarAttendance);
         inputCard = findViewById(R.id.cardAttendanceInput);
@@ -77,6 +80,26 @@ public class AttendanceActivity extends AppCompatActivity {
                 addMemberAttendance();
             }
         });
+
+        // Back Button Listener
+        if (btnBack != null) {
+            btnBack.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish(); // Go back to Dashboard
+                }
+            });
+        }
+
+        // Return to Dashboard Button Listener
+        if (btnReturn != null) {
+            btnReturn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish(); // Return to Dashboard
+                }
+            });
+        }
     }
 
     private void applyAttendanceAnimations() {

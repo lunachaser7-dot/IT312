@@ -1,6 +1,7 @@
 package com.example.church;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -20,6 +21,8 @@ public class FinanceActivity extends AppCompatActivity {
     private List<FinanceItem> financeList;
     private TextView txtTitle, txtSub, txtRecent;
     private CardView cardSummary;
+    private android.widget.ImageButton btnBack;
+    private com.google.android.material.button.MaterialButton btnReturn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,8 @@ public class FinanceActivity extends AppCompatActivity {
         txtSub = findViewById(R.id.txtFinanceSub);
         txtRecent = findViewById(R.id.txtRecentTrans);
         cardSummary = findViewById(R.id.cardFinanceSummary);
+        btnBack = findViewById(R.id.btnBackFinance);
+        btnReturn = findViewById(R.id.btnReturnFinance);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -53,6 +58,26 @@ public class FinanceActivity extends AppCompatActivity {
 
         // Apply Animations
         applyFinanceAnimations();
+
+        // Back Button Listener
+        if (btnBack != null) {
+            btnBack.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish(); // Go back to Dashboard
+                }
+            });
+        }
+
+        // Return to Dashboard Button Listener
+        if (btnReturn != null) {
+            btnReturn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish(); // Return to Dashboard
+                }
+            });
+        }
     }
 
     private void fetchFinanceData() {

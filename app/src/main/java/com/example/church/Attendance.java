@@ -17,7 +17,7 @@ public class Attendance {
     private String status; // 'present', 'absent', 'excused'
     private String notes;
     
-    @SerializedName("member_name")
+    @SerializedName("member_full_name")
     private String memberName; 
 
     // Constructor for adding new attendance
@@ -31,7 +31,25 @@ public class Attendance {
 
     // Getters and Setters for Adapter compatibility
     public String getFullname() { 
-        return memberName != null ? memberName : "Member #" + memberId; 
+        if (memberName != null && !memberName.isEmpty() && !memberName.equals("null null")) {
+            return memberName;
+        }
+        
+        // Smart extract from notes if name is missing in joined table
+        if (notes != null && notes.startsWith("Member: ")) {
+            String[] parts = notes.split(" \\| ");
+            return parts[0].replace("Member: ", "");
+        }
+        
+        return "Member #" + memberId; 
+    }
+    
+    public String getCleanNotes() {
+        if (notes != null && notes.startsWith("Member: ")) {
+            String[] parts = notes.split(" \\| ");
+            return parts.length > 1 ? parts[1] : "—";
+        }
+        return notes != null ? notes : "—";
     }
     
     public String getAttendance_date() { 
