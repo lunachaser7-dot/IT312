@@ -1,0 +1,3 @@
+Fixed GET /api/attendance for website display
+Added CORS support
+- Fixed data mapping for member and event names
